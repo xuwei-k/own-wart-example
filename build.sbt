@@ -5,7 +5,7 @@ lazy val commonSettings = Def.settings(
 lazy val myWarts = project.in(file("my-warts")).settings(
   commonSettings,
   libraryDependencies ++= Seq(
-    "org.wartremover" %% "wartremover" % wartremover.Wart.PluginVersion
+    "org.wartremover" % "wartremover" % wartremover.Wart.PluginVersion cross CrossVersion.full
   )
 )
 
