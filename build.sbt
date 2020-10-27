@@ -12,7 +12,5 @@ lazy val myWarts = project.in(file("my-warts")).settings(
 lazy val main = project.in(file("main")).settings(
   commonSettings,
   wartremoverWarnings += Wart.custom("mywarts.Unimplemented"),
-  wartremoverClasspaths ++= {
-    (fullClasspath in (myWarts, Compile)).value.map(_.data.toURI.toString)
-  }
+  wartremover.WartRemover.dependsOnLocalProjectWarts(myWarts),
 )
