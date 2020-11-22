@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: '0 11 * * *'
+jobs:
+  test:
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        include:
+          - java: 8
+            os: ubuntu-latest
+          - java: 8
+            os: windows-latest
+          - java: 11
+            os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: olafurpg/setup-scala@v10
+      with:
+        java-version: "adopt@1.${{matrix.java}}"
+    - uses: actions/checkout@v2.3.4
+    - uses: coursier/cache-action@v5
+    - shell: bash
+      run: sbt -v compile
