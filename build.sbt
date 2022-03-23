@@ -11,6 +11,7 @@ lazy val myWarts = project.in(file("my-warts")).settings(
 
 lazy val main = project.in(file("main")).settings(
   commonSettings,
+  scalacOptions += "-P:wartremover:loglevel:debug",
   wartremoverWarnings += Wart.custom("mywarts.Unimplemented"),
   wartremover.WartRemover.dependsOnLocalProjectWarts(myWarts),
 )
