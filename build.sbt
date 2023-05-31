@@ -1,6 +1,6 @@
 lazy val commonSettings = Def.settings(
   scalaVersion := "2.13.10",
-  crossScalaVersions += "3.2.2"
+  crossScalaVersions += "3.3.0"
 )
 
 lazy val myWarts = project.in(file("my-warts")).settings(
