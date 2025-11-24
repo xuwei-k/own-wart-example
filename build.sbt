@@ -1,5 +1,5 @@
 lazy val commonSettings = Def.settings(
-  scalaVersion := "2.13.17",
+  scalaVersion := "2.13.18",
   crossScalaVersions += "3.7.4"
 )
 
